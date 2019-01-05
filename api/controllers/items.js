@@ -2,27 +2,26 @@ const { currency } = require('../helpers');
 const itemsService = require('../services/items');
 
 const cors = (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET,PUT");
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT');
   res.header('Access-Control-Allow-Credentials', 'true');
 
   next();
 };
 
 const error405 = (req, res, next) => {
-  res.status(405).json({ "code": 405, "message": "METHOD NOT ALLOWED" });
+  res.status(405).json({ code: 405, message: 'METHOD NOT ALLOWED' });
 };
 
 const getItems = (req, res, next) => {
   const { q } = req.query;
-  let { limit } = req.query;
+  const { limit } = req.query;
 
-  itemsService.getItems(q).then((response) => {
+  itemsService.getItems(q).then(response => {
     if (response.status === 200) {
-
       const { results, filters } = response.data;
-      const items = results.slice(0, limit || results.length ).map(result => ({
+      const items = results.slice(0, limit || results.length).map(result => ({
         id: result.id,
         title: result.title,
         price: {
@@ -37,27 +36,29 @@ const getItems = (req, res, next) => {
       }));
 
       const categoryList = filters.find(filter => filter.id === 'category').values;
-      const categories = categoryList[0] ? categoryList[0].path_from_root.map(categoryItem => categoryItem.name) : [];
+      const categories = categoryList[0]
+        ? categoryList[0].path_from_root.map(categoryItem => categoryItem.name)
+        : [];
 
       res.status(200).json({
         author: {
-          name: "Mario",
-          lastname: "Rinaldi"
+          name: 'Mario',
+          lastname: 'Rinaldi'
         },
         categories,
         items
       });
     } else {
-      res.status(response.status).json({ "code": response.status, "message": response.statusText });
+      res.status(response.status).json({ code: response.status, message: response.statusText });
     }
-  }).catch((error) => {
-    res.status(500).json({ "code": 500, "message": "INTERNAL SERVER ERROR", "errorMsg": error });
+  }).catch(error => {
+    res.status(500).json({ code: 500, message: 'INTERNAL SERVER ERROR', errorMsg: error });
   });
 };
 
 const getItem = (req, res, next) => {
   const { id } = req.params;
-  itemsService.getItem(id).then((response) => {
+  itemsService.getItem(id).then(response => {
     if (response.status === 200) {
       const item = {
         id: response.data.id,
@@ -65,7 +66,7 @@ const getItem = (req, res, next) => {
         price: {
           currency: response.data.currency_id,
           amount: currency.getAmount(response.data.price),
-          decimals: currency.getCents(response.data.price),
+          decimals: currency.getCents(response.data.price)
         },
         picture: response.data.pictures && response.data.pictures[0] ? response.data.pictures[0].url : '',
         condition: response.data.condition,
@@ -76,17 +77,17 @@ const getItem = (req, res, next) => {
 
       res.status(200).json({
         author: {
-          name: "Mario",
-          lastname: "Rinaldi"
+          name: 'Mario',
+          lastname: 'Rinaldi'
         },
         categories: response.data.categories,
         item
       });
     } else {
-      res.status(response.status).json({ "code": response.status, "message": response.statusText });
+      res.status(response.status).json({ code: response.status, message: response.statusText });
     }
-  }).catch((error) => {
-    res.status(500).json({ "code": 500, "message": "INTERNAL SERVER ERROR", "errorMsg": error });
+  }).catch(error => {
+    res.status(500).json({ code: 500, message: 'INTERNAL SERVER ERROR', errorMsg: error });
   });
 };
 
@@ -95,4 +96,4 @@ module.exports = {
   error405,
   getItems,
   getItem
-}
+};

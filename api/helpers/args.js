@@ -1,19 +1,19 @@
 const parse = () => {
-	const args = {};
-	const rawArgs = process.argv.slice(2);
-	let tmpArg = '';
+  const args = {};
+  const rawArgs = process.argv.slice(2);
+  let tmpArg = '';
 
-	rawArgs.forEach((arg) => {
-		tmpArg = arg.split('=');
-		args[tmpArg[0].replace(/^-+/,'')] = tmpArg[1];
-	});
+  rawArgs.forEach(arg => {
+    tmpArg = arg.split('=');
+    args[tmpArg[0].replace(/^-+/, '')] = tmpArg[1];
+  });
 
-	return args;
+  return args;
 };
-const get = (param) => parse()[param];
+const get = param => parse()[param];
 
 
 module.exports = {
   get,
   parse
-}
+};

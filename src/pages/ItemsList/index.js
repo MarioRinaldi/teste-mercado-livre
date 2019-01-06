@@ -1,0 +1,49 @@
+import React, { Component, Fragment } from 'react';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
+import queryString from 'query-string';
+
+import Header from '../../components/Header';
+import Item from '../../components/Item';
+import Breadcrumb from '../../components/Breadcrumb';
+
+import * as SearchActions from '../../actions/SearchActions';
+
+import './itemsList.scss';
+
+class ItemsList extends Component {
+  componentDidMount() {
+    const { search } = queryString.parse(this.props.location.search);
+    this.props.buscaItems(search);
+    this.props.termoBusca(search);
+  }
+
+  render() {
+    console.log('asds', this);
+    return (
+      <Fragment>
+        <Header />
+        <main className="container">
+          <Breadcrumb />
+          <div className="row">
+            <div className="col-10 offset-1">
+              <div className="itemsList container border border-light rounded bg-white">
+                {
+                  this.props.search.items && this.props.search.items.map((item, indice) => {
+                    return <Item item={item} key={item.id} />;
+                  })
+
+                }
+              </div>
+            </div>
+          </div>
+        </main>
+      </Fragment>
+    );
+  }
+}
+
+const mapStateToProps = state => ({ search: state.search })
+const mapDispatchToProps = dispatch => bindActionCreators(SearchActions, dispatch)
+export default connect(mapStateToProps, mapDispatchToProps)(ItemsList);

@@ -1,0 +1,15 @@
+.itemPage {
+  .condition {
+    font-size: 0.875rem;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .price {
+    font-size: 2.875rem;
+    sup {
+      font-size: 50%;
+      top: -1rem;
+    }
+  }
+}

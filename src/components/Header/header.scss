@@ -1,0 +1,40 @@
+header {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #FFE600;
+    div {
+        margin: 0 auto;
+    }
+    h1 {
+        margin: 0;
+        a {
+          display: block;
+        }
+        img {
+            width: 50px;
+            margin-top: -5px;
+        }
+    }
+    form {
+        position: relative;
+        height: 32px;
+        background: #FFF;
+        input {
+            box-sizing: border-box;
+            font-size: 18px;
+        }
+        button {
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            height: 32px;
+            width: 32px;
+            background-color: #EEEEEE !important;
+            border: none;
+            background: url('/img/ic_Search.png') no-repeat center center;
+        }
+
+    }
+}

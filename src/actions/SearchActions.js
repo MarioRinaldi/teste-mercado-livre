@@ -12,7 +12,7 @@ const buscaItems = (text) => {
   console.log('SearchActions -> busca', text);
   // return { type: 'SEARCH_ITEMS', payload };
   return dispatch => {
-    axios.get(`${api_url}/?q=${text}`).then(response => {
+    axios.get(`${api_url}/?q=${text}&limit=4`).then(response => {
       if (response.status === 200) {
         const payload = {
           term: text,

@@ -13,7 +13,7 @@ export default function (state = INITIAL_STATE, action) {
     case 'SEARCH_BREADCRUMB':
       return {...state, breadcrumb };
     case 'SEARCH_TERM':
-      return {...state, text};
+      return {...state, text, breadcrumb: ''};
     default:
       return state;
   }

@@ -1,5 +1,6 @@
 .item {
   overflow: hidden;
+  cursor: pointer;
   &:last-child {
     border: none !important;
   }

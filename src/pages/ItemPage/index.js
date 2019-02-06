@@ -12,6 +12,7 @@ import './itemPage.scss';
 class ItemPage extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
+    this.id = id;
     this.props.buscaItem(id);
   }
 
@@ -22,7 +23,7 @@ class ItemPage extends Component {
         <main className="container">
           <Breadcrumb />
           {
-            this.props.search.item !== {} &&
+            this.props.search.item !== {} && this.id && this.props.search.item.id === this.id &&
             <div className="itemPage container p-0">
               <div className="row no-gutters">
                 <div className="col-10 offset-1  border border-light rounded py-3 bg-white">
@@ -54,7 +55,7 @@ class ItemPage extends Component {
                               } {
                                 this.props.search.item.price.amount
                               }
-                              <sup>{this.props.search.item.price.decimals}</sup>
+                              <sup>{`${this.props.search.item.price.decimals < 10 ? "0" : ""}${this.props.search.item.price.decimals}`}</sup>
                             </p>
                           }
                           <button type="button" className="btn btn-primary w-75">Comprar</button>

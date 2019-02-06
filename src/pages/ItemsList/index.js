@@ -35,6 +35,9 @@ class ItemsList extends Component {
                   })
 
                 }
+                {
+                  !this.props.search.items.length && this.props.search.breadcrumb && <p className="mt-3">Não há anúncios que coincidam com a sua busca.</p>
+                }
               </div>
             </div>
           </div>

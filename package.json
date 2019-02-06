@@ -2,9 +2,11 @@
   "name": "mercado-livre",
   "version": "0.1.0",
   "private": true,
+  "api_url": "http://localhost:3030/api/items",
   "dependencies": {
     "@babel/core": "7.1.6",
     "@svgr/webpack": "2.4.1",
+    "axios": "^0.18.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
@@ -23,7 +25,8 @@
     "eslint-plugin-flowtype": "2.50.1",
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
-    "eslint-plugin-react": "7.11.1",
+    "eslint-plugin-react": "^7.11.1",
+    "express": "^4.16.4",
     "file-loader": "2.0.0",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.0",
@@ -54,9 +57,11 @@
     "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
+    "api": "node scripts/server.js",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "eslint:api": "eslint ./api --config ./api/.eslintrc"
   },
   "eslintConfig": {
     "extends": "react-app"

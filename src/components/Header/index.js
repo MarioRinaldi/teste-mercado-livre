@@ -2,13 +2,14 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 
 import * as SearchActions from '../../actions/SearchActions';
 
 import './header.scss';
 
 const Header = props => {
-  const search = (e) => {
+  const search = e => {
     e.preventDefault();
     const { search } = e.target.elements;
     props.termoBusca(search.value);
@@ -33,7 +34,14 @@ const Header = props => {
       </div>
     </header>
   );
-}
+};
+
+Header.propTypes = {
+  termoBusca: PropTypes.func.isRequired,
+  buscaItems: PropTypes.func.isRequired,
+  history: PropTypes.func,
+  search: PropTypes.func
+};
 
 const mapStateToProps = state => ({ search: state.search })
 const mapDispatchToProps = dispatch => bindActionCreators(SearchActions, dispatch)

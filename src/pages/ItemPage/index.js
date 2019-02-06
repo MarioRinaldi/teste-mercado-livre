@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { PropTypes } from 'prop-types';
 
 import Header from '../../components/Header';
 import Breadcrumb from '../../components/Breadcrumb';
@@ -82,6 +83,19 @@ class ItemPage extends Component {
     );
   }
 }
+
+ItemPage.propTypes = {
+  termoBusca: PropTypes.func.isRequired,
+  buscaItems: PropTypes.func.isRequired,
+  buscaItem: PropTypes.func.isRequired,
+  history: PropTypes.func,
+  search: PropTypes.func,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string
+    })
+  })
+};
 
 const mapStateToProps = state => ({ search: state.search })
 const mapDispatchToProps = dispatch => bindActionCreators(SearchActions, dispatch)

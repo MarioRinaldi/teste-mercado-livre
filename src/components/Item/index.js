@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 
 import * as SearchActions from '../../actions/SearchActions';
 
@@ -33,6 +34,27 @@ const Item = props => {
       </div>
     </div>
   );
+};
+Item.propTypes = {
+  termoBusca: PropTypes.func.isRequired,
+  buscaItem: PropTypes.func.isRequired,
+  search: PropTypes.func,
+  history: PropTypes.func,
+  item: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.shape({
+      currency: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+      decimals: PropTypes.number.isRequired
+    }),
+    picture: PropTypes.string.isRequired,
+    condition: PropTypes.string.isRequired,
+    free_shipping: PropTypes.bool.isRequired,
+    sold_quantity: PropTypes.number.isRequired,
+    city: PropTypes.string.isRequired,
+    description: PropTypes.string
+  })
 };
 
 const mapStateToProps = state => ({ search: state.search })

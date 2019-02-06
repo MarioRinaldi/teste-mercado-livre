@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import queryString from 'query-string';
+import { PropTypes } from 'prop-types';
 
 import Header from '../../components/Header';
 import Item from '../../components/Item';
@@ -30,7 +31,7 @@ class ItemsList extends Component {
             <div className="col-10 offset-1">
               <div className="itemsList container border border-light rounded bg-white">
                 {
-                  this.props.search.items && this.props.search.items.map((item, indice) => {
+                  this.props.search.items && this.props.search.items.map(item => {
                     return <Item item={item} key={item.id} />;
                   })
 
@@ -46,6 +47,16 @@ class ItemsList extends Component {
     );
   }
 }
+
+ItemsList.propTypes = {
+  termoBusca: PropTypes.func.isRequired,
+  buscaItems: PropTypes.func.isRequired,
+  history: PropTypes.func,
+  search: PropTypes.func,
+  location: PropTypes.shape({
+    search: PropTypes.object
+  })
+};
 
 const mapStateToProps = state => ({ search: state.search })
 const mapDispatchToProps = dispatch => bindActionCreators(SearchActions, dispatch)

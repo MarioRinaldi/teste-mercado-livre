@@ -2,16 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux';
 
-import './index.css';
+import Routes from './routes';
+import searchReducer from './store';
 
 import * as serviceWorker from './serviceWorker';
 
-import { BrowserRouter } from 'react-router-dom'
-import Routes from './routes';
-
-import { Provider } from 'react-redux';
-import searchReducer from './store';
+import './index.css';
 
 const reducers = combineReducers({
   search: searchReducer

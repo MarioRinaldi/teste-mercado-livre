@@ -1,0 +1,5 @@
+./test/unit/api/**/*.js
+--require mocha-clean/brief
+--show-process-tree
+--extension .es6
+--exit

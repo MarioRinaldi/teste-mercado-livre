@@ -5,6 +5,7 @@ import { PropTypes } from 'prop-types';
 
 import Header from '../../components/Header';
 import Breadcrumb from '../../components/Breadcrumb';
+import ErrorMsg from '../../components/ErrorMsg';
 
 import * as SearchActions from '../../actions/SearchActions';
 
@@ -74,9 +75,13 @@ class ItemPage extends Component {
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
+          }
+          {
+            !Object.keys(this.props.search.item).length && <ErrorMsg />
           }
         </main>
       </Fragment>
@@ -88,8 +93,8 @@ ItemPage.propTypes = {
   termoBusca: PropTypes.func.isRequired,
   buscaItems: PropTypes.func.isRequired,
   buscaItem: PropTypes.func.isRequired,
-  history: PropTypes.func,
-  search: PropTypes.func,
+  history: PropTypes.object,
+  search: PropTypes.object,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string

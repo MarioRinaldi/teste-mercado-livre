@@ -102,7 +102,7 @@ describe('enter on item page', () => {
     expect(condition.getText()).to.eventually.equal('Nuevo - 3 vendidos');
   });
 
-  it('enter on item valid', async () => {
+  it('enter on item invalid', async () => {
     ItemPage.visit(dataSearch.invalidIdProduct);
     const item = itemPage.mensagemFalha();
 

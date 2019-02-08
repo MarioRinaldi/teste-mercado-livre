@@ -27,6 +27,7 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "chalk": "2.4.1",
+    "concurrently": "^4.1.0",
     "css-loader": "1.0.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
@@ -82,7 +83,8 @@
   },
   "scripts": {
     "api": "node scripts/server.js",
-    "start": "node scripts/start.js",
+    "interface": "node scripts/start.js",
+    "start": "concurrently --kill-others 'npm run api' 'npm run interface'",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "unit": "mocha -t 20s",

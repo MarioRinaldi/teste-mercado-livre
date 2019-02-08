@@ -18,7 +18,7 @@ const getItems = (req, res, next) => {
   const { q } = req.query;
   const { limit } = req.query;
 
-  itemsService.getItems(q).then(response => {
+  return itemsService.getItems(q).then(response => {
     if (response.status === 200) {
       const { results, filters } = response.data;
       const items = results.slice(0, limit || results.length).map(result => ({
@@ -26,8 +26,8 @@ const getItems = (req, res, next) => {
         title: result.title,
         price: {
           currency: result.currency_id,
-          amount: currency.getAmount(result.price),
-          decimals: currency.getCents(result.price)
+          amount: parseInt(currency.getAmount(result.price), 10),
+          decimals: parseInt(currency.getCents(result.price), 10)
         },
         picture: result.thumbnail,
         condition: result.condition,
@@ -65,8 +65,8 @@ const getItem = (req, res, next) => {
         title: response.data.title,
         price: {
           currency: response.data.currency_id,
-          amount: currency.getAmount(response.data.price),
-          decimals: currency.getCents(response.data.price)
+          amount: parseInt(currency.getAmount(response.data.price), 10),
+          decimals: parseInt(currency.getCents(response.data.price), 10)
         },
         picture: response.data.pictures && response.data.pictures[0] ? response.data.pictures[0].url : '',
         condition: response.data.condition,

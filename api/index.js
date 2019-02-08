@@ -4,7 +4,7 @@ const { args } = require('./helpers');
 
 const app = express();
 
-const argumentos = args.parse();
+const argumentos = args.parse(process.argv);
 const host = argumentos.host || 'http://localhost';
 const port = argumentos.port || 3030;
 const url = [host, port].join(':');

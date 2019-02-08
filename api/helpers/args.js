@@ -1,6 +1,6 @@
-const parse = () => {
+const parse = (params) => {
   const args = {};
-  const rawArgs = process.argv.slice(2);
+  const rawArgs = (params || []).slice(2);
   let tmpArg = '';
 
   rawArgs.forEach(arg => {
@@ -10,8 +10,7 @@ const parse = () => {
 
   return args;
 };
-const get = param => parse()[param];
-
+const get = ({ args, param}) => parse(args)[param];
 
 module.exports = {
   get,

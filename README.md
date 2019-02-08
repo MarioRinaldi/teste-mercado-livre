@@ -98,9 +98,13 @@ npm run integration:api
 
 <a id="unit-tests" style="color: inherit;">E2E Tests:</a>
 ```
+# if first run:
+npm run install-serverselenium
+
 npm run e2e
 ```
 
+<img src="./public/img/readme/e2e-screenshot.png" />
 
 ## Coverage
 

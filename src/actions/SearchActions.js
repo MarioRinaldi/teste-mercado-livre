@@ -13,15 +13,15 @@ const buscaItems = text => dispatch => axios.get(`${apiURL}/?q=${text}&limit=4`)
     const payload = {
       term: text,
       items: response.data.items,
-      breadcrumb: response.data.categories ? response.data.categories.join(' > ') : ''
+      breadcrumb: response.data.categories ? response.data.categories.join(' > ') : ' '
     };
     return dispatch({ type: 'SEARCH_ITEMS', payload });
   }
-  return dispatch({ type: 'SEARCH_ITEMS', payload: { items: [], term: '', breadcrumb: '' } });
-}).catch(() => dispatch({ type: 'SEARCH_ITEMS', payload: { items: [], term: '', breadcrumb: '' } }));
+  return dispatch({ type: 'SEARCH_ITEMS', payload: { items: [], term: text, breadcrumb: ' ' } });
+}).catch(() => dispatch({ type: 'SEARCH_ITEMS', payload: { items: [], term: text, breadcrumb: ' ' } }));
 
 const buscaItem = id => dispatch => axios.get(`${apiURL}/${id}`).then(response => {
-  if (response.status === 200) {
+  if (response.status === 200 && response.data) {
     const payload = {
       item: response.data.item,
       breadcrumb: response.data.categories ? response.data.categories.join(' > ') : ''

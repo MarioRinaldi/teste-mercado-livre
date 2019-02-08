@@ -112,7 +112,7 @@ API has 97% code coverage (helpers and services).
 ```
 npm run coverage:api
 ```
-<img src="./public/img/coverage-screenshot.png" />
+<img src="./public/img/readme/coverage-screenshot.png" />
 
 ## API Documentation
 

@@ -9,7 +9,7 @@ describe("service items tests", function() {
   const idOk = 'MLA754502455';
   const idFail = 'xablau';
 
-  it("getItems - at least one", (done) => {
+  it("getItems - at least one", done => {
     getItems(termOk).then(response => {
       console.log('');
       const { status, data } = response;
@@ -20,7 +20,7 @@ describe("service items tests", function() {
     .then(done);
   });
 
-  it("getItems - not found", (done) => {
+  it("getItems - not found", done => {
     getItems(termFail).then(response => {
       console.log('');
       const { status, data } = response;
@@ -31,7 +31,7 @@ describe("service items tests", function() {
     .then(done);
   });
 
-  it("getItem - success", (done) => {
+  it("getItem - success", done => {
     getItem(idOk).then(response => {
       console.log('');
       const { status, data } = response;
@@ -42,7 +42,7 @@ describe("service items tests", function() {
     .then(done);
   });
 
-  it("getItem - not found", (done) => {
+  it("getItem - not found", done => {
     getItem(idFail).then()
     .catch(({ response }) => {
       console.log('');

@@ -15,16 +15,6 @@ const configs = {
   }
 };
 
-// Get env from process.env
-const getEnv = () => {
-  const envs = Object.keys(configs);
-  const env = process.env.env;
-  if (envs.includes(env)) {
-    return env;
-  }
-  return null;
-};
-
 // Set env (local is default)
 const env = process.env.NODE_ENV || 'local';
 

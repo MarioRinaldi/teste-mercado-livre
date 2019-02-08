@@ -9,6 +9,12 @@
         "jquery": true,
         "browser": true
     },
+    "settings": {
+
+      "react": {
+        "version": "detect"
+      }
+    },
     "rules": {
         "no-console": 0,
         "prefer-destructuring": 0,

@@ -2,7 +2,7 @@ class ItemsList {
   constructor() {
     this.mensagemFalha = () => element(by.css('.itemsList > p'));
     this.getItems = () => element(by.css('.itemsList')).all(by.css('.item'));
-    this.getItem = (pos) => {
+    this.getItem = pos => {
       const item = element(by.css('.itemsList')).all(by.css('.item')).get(pos);
       const title = item.element(by.css('.item__description__title'));
       const price = item.element(by.css('.item__description__price'));

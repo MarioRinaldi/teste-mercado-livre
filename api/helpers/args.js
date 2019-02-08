@@ -1,4 +1,4 @@
-const parse = (params) => {
+const parse = params => {
   const args = {};
   const rawArgs = (params || []).slice(2);
   let tmpArg = '';
@@ -10,7 +10,7 @@ const parse = (params) => {
 
   return args;
 };
-const get = ({ args, param}) => parse(args)[param];
+const get = ({ args, param }) => parse(args)[param];
 
 module.exports = {
   get,

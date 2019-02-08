@@ -72,9 +72,13 @@
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "3.6.3"
   },
+  "devDependencies": {
+    "concurrently": "^4.1.0"
+  },
   "scripts": {
     "api": "node scripts/server.js",
-    "start": "node scripts/start.js",
+    "interface": "node scripts/start.js",
+    "start": "concurrently --kill-others 'npm run api' 'npm run interface'",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "eslint": "eslint ./src",

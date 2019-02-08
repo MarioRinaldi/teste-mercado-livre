@@ -5,6 +5,7 @@ import { PropTypes } from 'prop-types';
 
 import Header from '../../components/Header';
 import Breadcrumb from '../../components/Breadcrumb';
+import ErrorMsg from '../../components/ErrorMsg';
 
 import * as SearchActions from '../../actions/SearchActions';
 
@@ -74,9 +75,13 @@ class ItemPage extends Component {
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
+          }
+          {
+            !Object.keys(this.props.search.item).length && <ErrorMsg />
           }
         </main>
       </Fragment>

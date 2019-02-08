@@ -88,8 +88,8 @@ ItemPage.propTypes = {
   termoBusca: PropTypes.func.isRequired,
   buscaItems: PropTypes.func.isRequired,
   buscaItem: PropTypes.func.isRequired,
-  history: PropTypes.func,
-  search: PropTypes.func,
+  history: PropTypes.object,
+  search: PropTypes.object,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string

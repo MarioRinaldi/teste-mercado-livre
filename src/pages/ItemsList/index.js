@@ -51,8 +51,8 @@ class ItemsList extends Component {
 ItemsList.propTypes = {
   termoBusca: PropTypes.func.isRequired,
   buscaItems: PropTypes.func.isRequired,
-  history: PropTypes.func,
-  search: PropTypes.func,
+  history: PropTypes.object,
+  search: PropTypes.object,
   location: PropTypes.shape({
     search: PropTypes.object
   })

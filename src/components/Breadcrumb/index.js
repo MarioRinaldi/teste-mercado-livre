@@ -22,8 +22,8 @@ const Breadcrumb = props => (
 Breadcrumb.propTypes = {
   termoBusca: PropTypes.func.isRequired,
   buscaItems: PropTypes.func.isRequired,
-  history: PropTypes.func,
-  search: PropTypes.func
+  history: PropTypes.object,
+  search: PropTypes.object
 };
 
 const mapStateToProps = state => ({ search: state.search })

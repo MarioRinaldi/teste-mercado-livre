@@ -64,16 +64,17 @@ class ItemPage extends Component {
                       </div>
                     </div>
 
-                    <div className="row mt-5 mx-3">
-                      <div className="col-12 p-0">
-                        <p className="h3 mb-3 pb-3">descripción del producto</p>
-                        <p className="text-secondary text-justify">
-                          {
-                            this.props.search.item.description
-                          }
-                        </p>
+                    {
+                      !!this.props.search.item.description &&
+                      <div className="row mt-5 mx-3">
+                        <div className="col-12 p-0">
+                          <p className="h3 mb-3 pb-3">descripción del producto</p>
+                          <p className="text-secondary text-justify">
+                            { this.props.search.item.description }
+                          </p>
+                        </div>
                       </div>
-                    </div>
+                    }
                   </div>
 
                 </div>

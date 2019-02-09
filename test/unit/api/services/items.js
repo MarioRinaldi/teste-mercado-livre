@@ -6,7 +6,10 @@ describe("service items tests", function() {
 
   const termOk = 'ipod';
   const termFail = 'xablau';
-  const idOk = 'MLA754502455';
+  const idOk =  {
+    withDescription: 'MLA754502455',
+    withoutDescription: 'MLA769875051'
+  };
   const idFail = 'xablau';
 
   it("getItems - at least one", done => {
@@ -31,12 +34,25 @@ describe("service items tests", function() {
     .then(done);
   });
 
-  it("getItem - success", done => {
-    getItem(idOk).then(response => {
+  it("getItem - success with description", done => {
+    getItem(idOk.withDescription).then(response => {
       console.log('');
       const { status, data } = response;
       expect(status).to.equal(200);
-      expect(data.id).to.equal(idOk);
+      expect(data.id).to.equal(idOk.withDescription);
+      expect(data.description).to.not.equal('');
+    })
+    .catch()
+    .then(done);
+  });
+
+  it("getItem - success without description", done => {
+    getItem(idOk.withoutDescription).then(response => {
+      console.log('');
+      const { status, data } = response;
+      expect(status).to.equal(200);
+      expect(data.id).to.equal(idOk.withoutDescription);
+      expect(data.description).to.equal('');;
     })
     .catch()
     .then(done);

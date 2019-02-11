@@ -4,7 +4,6 @@ import axios from 'axios';
 const { apiURL } = require('../../package.json');
 
 const termoBusca = (payload = '') => {
-  console.log('SearchActions -> termoBusca', payload);
   return { type: 'SEARCH_TERM', payload };
 };
 

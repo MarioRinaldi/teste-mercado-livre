@@ -21,7 +21,6 @@ class ItemsList extends Component {
   }
 
   render() {
-    console.log('asds', this);
     return (
       <Fragment>
         <Header />
